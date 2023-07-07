@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap');
+
+
+body{
+    text-align: center;
+    background-image: url("../img/Background/abstract-bluish-paint-background-wallpaper.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Source Serif Pro', serif;
+}
+
+.error{
+    color: red;
+    font-style: italic;
+}
+
+.registration{
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-control{
+    width: 250px;
+    height: 30px;
+    border-radius: 10px;
+    border: black solid 1.5px;
+    text-align: center;
+}
+
+.submit{
+    margin-top: .4rem;
+}
+
+.back{
+    display: inline-block;
+    margin-top: .4rem;
+
+}

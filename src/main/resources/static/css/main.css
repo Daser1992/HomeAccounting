@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap');
+
+
+
+
+@media screen and (max-width: 1200px) {
+    main{
+        width: 100% !important;
+    }
+}
+
+body {
+    text-align: center;
+    background-image: url("../img/Background/abstract-bluish-paint-background-wallpaper.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Source Serif Pro', serif;
+}
+
+#hello {
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(25, 55, 109);
+}
+
+.btn-style {
+    border-radius: .5rem;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.ul_without_list_style {
+    list-style: none;
+}
+
+#header {
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    height: 3rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#header .link-private-office{
+    color: black;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+}
+
+#header .link-private-office:hover{
+    text-decoration: underline;
+}
+
+.header_list {
+    display: flex;
+    justify-content: center;
+}
+
+.header_list > li {
+    margin-right: 0.8rem;
+}
+
+
+main {
+    width: 85%;
+    background: rgba(165, 215, 232, 0.8);
+    margin: 0.5rem auto 0;
+    padding-bottom: 3rem;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+    border: rgba(0, 0, 0, 0.8) solid 1px;
+}
+
+.main_content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: .5rem;
+    padding: 0 .5rem;
+}
+
+.report {
+    height: 35rem;
+    font-size: .9rem;
+    font-weight: bold;
+    text-align: left;
+    background: white;
+    overflow-y: scroll;
+}
+
+.report .wallet_info {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+
+}
+
+.report .chose_wallet_name {
+    text-transform: uppercase;
+}
+
+.report .date {
+    font-weight: normal;
+}
+
+.report .report_list {
+    padding: .5rem;
+}
+
+.report .report_list > .li_of_transactions {
+    /*background: rgb(245, 245, 245);*/
+    background: rgba(249, 226, 175, 0.6);
+    padding: .3rem;
+    margin-bottom: .4rem;
+}
+
+.report .report_list li .sum_that_was_add {
+    font-style: italic;
+}
+
+.arrow_left {
+    color: green;
+    font-size: .9rem;
+}
+
+.arrow_right {
+    color: red;
+    font-size: .9rem;
+}
+
+#transaction-money {
+    background: white;
+}
+
+#transaction-money .form_add_money {
+    display: grid;
+    grid-template-rows: 2.5rem 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 6rem;
+}
+
+.transaction-money_add-or-remove {
+    display: flex;
+    grid-column: 1/3;
+    grid-row: 1/1;
+}
+
+.add_money_to_wallet {
+    width: 50%;
+    background: rgb(255, 165, 0);
+    /*background: rgb(124,252,0);*/
+    cursor: pointer;
+}
+
+/*.sum_for_transaction{*/
+/*    width: 12rem;*/
+/*}*/
+.form-control{
+    display: inline-block;
+    width: 13rem;
+}
+.remove_money_from_wallet {
+    width: 50%;
+    background: rgb(50, 205, 50);
+    /*background: rgb(255,165,0);*/
+    cursor: pointer;
+}
+
+.idColor {
+    background: white;
+    font-weight: bold;
+}
+
+.addFormColor {
+    border: solid 0.3rem rgb(50, 205, 50);
+}
+
+.removeFromColor {
+    border: solid 0.3rem rgb(255, 165, 0);
+}
+
+.form_add_money > .add_money_flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row: 2/3;
+    grid-column: 1/3;
+}
+
+.wallets_drop_list {
+    margin: 0 auto ;
+    text-align: center;
+    position: relative;
+}
+
+.wallets_drop_list > .wallet-text-for-user{
+    margin-bottom: .2rem;
+}
+
+.wallets_drop_list .chose_wallet_menu {
+    display: flex;
+    padding-left: .5rem;
+    background: rgb(249, 226, 175);
+    border: 1px solid black;
+    width: 13rem;
+    margin: .2rem auto .1rem;
+    position: relative;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+.throw_btn {
+    cursor: pointer;
+    position: absolute;
+    right: .4rem;
+}
+
+.wallets_drop_list .list_of_wallets {
+    width: 13rem;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+    position: absolute;
+    display: none;
+    z-index: 10;
+}
+
+
+.list_of_wallets > .view_wallets {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.view_wallets .wallet_name {
+    /*background: rgba(220, 220, 220, 0.6);*/
+    background: rgb(249, 226, 175);
+    width: 100%;
+    margin: .2rem;
+
+}
+
+.purposes_drop_list {
+    margin: 0 auto ;
+    text-align: center;
+    position: relative;
+
+}
+
+.purposes_drop_list > .purpose-text-for-user{
+    margin-bottom: .2rem;
+}
+
+.purposes_drop_list .using_purpose_menu {
+    display: flex;
+    padding-left: .5rem;
+    /*background: white;*/
+    background: rgb(249, 226, 175);
+    border: 1px solid black;
+    width: 13rem;
+    margin: .2rem auto .1rem;
+    position: relative;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.purposes_drop_list .list-of-purposes {
+    width: 13rem;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+    position: absolute;
+    display: none;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.list-of-purposes .purpose {
+    /*background: rgba(220, 220, 220, 0.6);*/
+    background: rgb(249, 226, 175);
+    width: 97%;
+    margin: .2rem;
+    cursor: pointer;
+}
+
+.list-of-purposes__disable {
+    display: none;
+}
+
+.list-of-purposes__active {
+    display: inline-block;
+}
+
+.list-of-purposes_add-purpose {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding-bottom: 0.2rem;
+}
+
+
+.button_of_transaction {
+    margin-left: .2rem;
+}
+
+.new-wallet-currency {
+    display: flex;
+    justify-content: center;
+    margin-top: .4rem;
+}
+
+.new-wallet-currency .new-wallet-currency__wrap-for-radio{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.new-wallet-currency .new-wallet-currency__wrap-for-radio:nth-child(2){
+    margin: 0 2.5rem;
+    cursor: pointer;
+}
+
+.new-wallet-currency .choose_currency_radio {
+    margin: .4rem 1rem;
+    cursor: pointer;
+}
+
+.new-wallet-currency  .label_for_currency {
+    margin: .2rem .3rem;
+    cursor: pointer;
+}
+
+/*.new_wallet_name{*/
+/*    width: 12rem;*/
+/*}*/
+
+.transaction-money_add-new-wallet {
+    padding-top: 1rem;
+}
+
+.borderRed {
+    border: solid red;
+}
+
+.sort-transactions-of-purposes {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.forEach-purpose {
+    background:rgba(249, 226, 175, 0.6);
+}
+
+.forEach-purpose > .forEach-purpose_add-sum {
+    color: rgb(50, 205, 50);
+    font-weight: bold;
+}
+
+.forEach-purpose > .forEach-purpose_remove-sum {
+    color: red;
+    font-weight: bold;
+}
+
+.sort-transactions-of-purposes_add-purposes {
+    padding: .5rem;
+}
+
+
+#logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5.5rem;
+    background: rgb(245, 255, 255);
+    margin: .5rem auto 0;
+    font-size: 1.2rem;
+    border-radius: .5rem;
+    border: black 1px solid;
+
+}
+
+.list-of-purposes_btn-add-purpose {
+    margin: .3rem 0 0.3rem;
+}
+
+.btn_login_out {
+    position: absolute;
+    right: 1rem;
+    top: .3rem;
+}
+
+.login_out {
+    color: black;
+    text-decoration: none;
+}
+
+.login_out:hover {
+    text-decoration: none;
+}
+
+.btn_login_out:hover .login_out {
+    color: white;
+
+}
+

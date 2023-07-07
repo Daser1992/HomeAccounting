@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Accounting</title>
+    <link rel="icon" th:href="@{/img/Icon/icons8-accounting-cloud-32.png}" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+<header id="header">
+    <a class="link-private-office" href="/private_office">Особистий кабінет</a>
+
+
+
+        <a class="login_out" href="/logout">
+            <button type="submit" class="btn btn-outline-dark btn_login_out">
+                Вийти
+            </button>
+        </a>
+
+
+</header>
+
+<main>
+    <p id="hello" th:text="'Доброго дня ' + ${login}"></p>
+    <div class="main_content">
+
+        <div class="report">
+            <div class="wallet_info">
+                <p th:text="${wallet_name}" class="chose_wallet_name"></p>
+                <span th:text="${sum_of_wallet}" class="sum_of_wallet"></span>
+            </div>
+            <ul class="report_list ul_without_list_style">
+
+                <li th:each="t : ${transactions}" class="li_of_transactions">
+                    <span th:text="${t.getDate()}" class="date"></span>
+                    <span th:text="${t.getPurpose()}"></span>
+                    <span th:if="${t.getSign().equals('+')}" class="arrow_left">&lArr;</span>
+                    <span th:if="${t.getSign().equals('-')}" class="arrow_right">&rArr;</span>
+                    <span th:text="${t.getSuma()} + ${currency}" class="sum_that_was_add"></span>
+                </li>
+            </ul>
+
+        </div>
+
+        <div id="transaction-money">
+
+            <div class="form_add_money addFormColor">
+                <div class="transaction-money_add-or-remove">
+                    <div class="add_money_to_wallet idColor">Доходи</div>
+                    <div class="remove_money_from_wallet">Витрати</div>
+                </div>
+
+                <div class="wallets_drop_list">
+                    <span class="wallet-text-for-user">Вибір гаманця:</span>
+                    <div class="chose_wallet_menu">
+                        <div th:text="${wallet_name}" class="wallet_with_current_working"></div>
+                        <div class="throw_btn walletDropButton"> &#9660;</div>
+                    </div>
+
+                    <div class="list_of_wallets">
+                        <div th:each="w : ${listOfWallet}" class="view_wallets">
+
+                            <div th:text="${w.getName()}" class="wallet_name"></div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <form class="add_money_flex">
+
+                    <input type="number" step="any" pattern="[0-9]+(\.[0-9]+)?" class="sum_for_transaction form-control" name="income"
+                           placeholder="Введіть суму" >
+                    <button type="submit" class="button_of_transaction btn btn-outline-dark">Записати</button>
+
+                </form>
+
+                <div class="purposes_drop_list">
+                    <span class="purpose-text-for-user">Призначення платежа:</span>
+                    <div class="using_purpose_menu">
+                        <div class="using_purpose">Без категорії</div>
+                        <div class="throw_btn"> &#9660;</div>
+                    </div>
+                    <div class="list-of-purposes">
+                        <div class="list-of-purposes_wrap-for-purposes">
+
+                            <div class="view-purpose" th:each="purpose : ${purposes}">
+                                <div class="purpose" th:text="${purpose}"></div>
+                            </div>
+
+                        </div>
+                        <div class="list-of-purposes_wrap-for-add-purpose">
+
+                            <div class="list-of-purposes_add-purpose ">Додати призначення платежа</div>
+                            <input type="text"
+                                   class="list-of-purposes_purpose-name list-of-purposes__disable form-control"
+                                   name="newPurpose">
+                            <button type="button"
+                                    class="list-of-purposes_btn-add-purpose btn btn-outline-dark list-of-purposes__disable">
+                                Додати
+                            </button>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <input type="text" name="user_purpose" class="user_purpose" value="Без категорії" style="display: none">
+                <input type="text" name="addOrRemove" class="addOrRemove" value="+" style="display: none">
+                <input type="text" name="currentWallet" class="currentWallet" th:value="${currentWallet}"
+                       style="display: none">
+
+
+            </div>
+
+            <div class="transaction-money_add-new-wallet">
+                <form class="add_new_wallet">
+
+                    <label for="new_wallet">Додати новий гаманець:</label><br>
+                    <input type="text" name="new_wallet" class="new_wallet_name form-control" id="new_wallet"
+                           placeholder="Введіть назву гаманця">
+                    <button type="submit" class="submit_add_wallet btn btn-outline-dark">Додати</button>
+                    <br>
+                    <div class="new-wallet-currency">
+
+                        <div class="new-wallet-currency__wrap-for-radio">
+                            <label class="label_for_currency" for="uah">Гривня</label>
+                            <input class="choose_currency_radio" type="radio" name="currency" value="грн" id="uah"
+                                   checked>
+                        </div>
+
+                        <div class="new-wallet-currency__wrap-for-radio">
+                            <label class="label_for_currency" for="usd">Доллар</label>
+                            <input class="choose_currency_radio" type="radio" name="currency" value="дол" id="usd">
+                        </div>
+
+                        <div class="new-wallet-currency__wrap-for-radio">
+                            <label class="label_for_currency" for="eur">Євро</label>
+                            <input class="choose_currency_radio" type="radio" name="currency" value="євро" id="eur">
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="sort-transactions-of-purposes">
+
+            <div class="sort-transactions-of-purposes_add-purposes"></div>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:src="@{/js/index.js}"></script>
+<script th:src="@{/js/rest.js}"></script>
+</body>
+</html>

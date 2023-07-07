@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Особистий кабінет</title>
+    <link rel="icon" th:href="@{/img/Icon/icons8-accounting-cloud-32.png}" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/privateOffice.css}">
+</head>
+<body>
+
+<header id="header">
+    <a class="main-page" href="/">На головну</a>
+
+    <a class="login_out" href="/logout">
+        <button type="submit" class="btn btn-outline-dark btn_login_out">
+            Вийти
+        </button>
+    </a>
+</header>
+
+<main class="main-content">
+
+    <div class="current-wallet">
+        <span class="current-wallet-name" th:text="${main_wallet}"></span>
+        <span class="current-wallet-sum" th:text="${main_walletSum}"></span>
+        <span class="current-wallet-currency" th:text="${main_walletCurrency}"></span>
+
+    </div>
+
+    <div class="chose-info-about-wallet">
+
+        <section class="userWallets">
+            <h4 th:text="${userLogin}"></h4>
+            <div class="user-wallets-wrap">
+
+                <div class="wallets_drop_list">
+                    <div class="chose_wallet_menu">
+                        <div class="wallet_with_current_working">Вибір гаманця</div>
+                        <div class="throw_btn walletDropButton"> &#9660;</div>
+                    </div>
+
+                    <div class="list_of_wallets">
+                        <div class="wallet-forEach" th:each="wallet : ${user_wallets}">
+
+                            <span class="wallet-name" th:text="${wallet.getName()}"></span>
+                            <span style="display: none" class="wallet-sum" th:text="${wallet.getSum()}"></span>
+                            <span style="display: none" class="wallet-currency" th:text="${wallet.getCurrency()}"></span>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="purposes">
+                    <div class="user-purpose" th:each="purpose : ${purposes}">
+                        <span class="user-purpose-name" th:text="${purpose}"></span>
+                        <div class="delete-purpose" th:value="${purpose}">&#10008;</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="delete-wallet">
+                <form action="/delete_wallet" method="POST">
+                    <label for="name-of-wallet-for-delete">Введіть назву гаманця для його видалення</label>
+                    <input id="name-of-wallet-for-delete" name="walletName" type="text" class="form-control"
+                           placeholder="Введіть назву гаманця">
+
+                    <button type="submit" class="btn btn-outline-dark btn-for-delete-wallet">Видалити</button>
+                </form>
+                <hr class="line">
+                <div class="all-purposes">
+
+                    <div class="user-purpose"></div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+        <section id="stat">
+            <div class="chose-stat">
+
+                <div class="chose-stat_month">
+
+                    <div class="user-chose-the-month">Вибір інформації за місяць</div>
+
+                    <div>
+                        <ul class="chose-stat_month_months">
+                            <li class="chose-month">Січень</li>
+                            <li class="chose-month">Лютий</li>
+                            <li class="chose-month">Березень</li>
+                            <li class="chose-month">Квітень</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <ul class="chose-stat_month_months">
+                            <li class="chose-month">Травень</li>
+                            <li class="chose-month">Червень</li>
+                            <li class="chose-month">Липень</li>
+                            <li class="chose-month">Серпень</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <ul class="chose-stat_month_months">
+                            <li class="chose-month">Вересень</li>
+                            <li class="chose-month">Жовтень</li>
+                            <li class="chose-month">Листопад</li>
+                            <li class="chose-month">Грудень</li>
+                        </ul>
+                    </div>
+
+                    <div class="transactions-for-all-time">За весь період</div>
+
+                </div>
+
+            </div>
+
+            <div class="stat-info-for-month">
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Назва гаманя</th>
+                        <th scope="col">Дата</th>
+                        <th scope="col">Призначення</th>
+                        <th scope="col">Доходи або Витрати</th>
+                        <th scope="col">Сумма</th>
+                        <th scope="col">Видалити</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th colspan="6"></th>
+                    </tbody>
+                </table>
+
+                <button class="btn btn-outline-dark show-more show-more-remove">Показати ще</button>
+
+            </div>
+
+
+        </section>
+
+    </div>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script th:src="@{/js/privateOffice.js}"></script>
+</body>
+</html>
